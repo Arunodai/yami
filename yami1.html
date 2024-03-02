@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Apology Page</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f3f3f3;
+            font-family: Arial, sans-serif;
+        }
+        #content {
+            text-align: center;
+            margin-top: 30px; /* Adds some space at the top */
+        }
+        #sorryMessage {
+            font-size: 20px;
+            color: #333;
+        }
+        #emoji {
+            font-size: 30px;
+            margin-bottom: 10px;
+        }
+        #buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px; /* Space between buttons */
+            position: absolute;
+            top: 50%; /* Center vertically */
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            transition: transform 0.5s;
+        }
+        #yesButton {
+            transition: transform 0.5s;
+        }
+    </style>
+</head>
+<body>
+    <div id="content">
+        <div id="emoji">😞</div>
+        <div id="sorryMessage">I am sorry, will you forgive me?</div>
+    </div>
+    <div id="buttons">
+        <button id="yesButton" class="button" onclick="acceptApology()">YES</button>
+        <button id="noButton" class="button" onclick="escalateApology()">NO</button>
+    </div>
+
+    <script>
+        let yesButtonScale = 1;
+        let noClickCount = 0;
+        const apologies = [
+            // Your apology messages...
+             "Your eyes are so beautiful when they smile, and your chubby cheeks are as soft as a baby's. I'm truly sorry for any trouble I've caused, longing to see that gentle happiness in your eyes again.",
+            "I miss the softness of your cheeks and the joy in your sparkling eyes. I'm sorry for any actions that have dimmed their light, and I yearn to see them glow with happiness once more.",
+            "The way you scold me, calling me an 'idiot' or 'bathameez,' is something I cherish. I'm sorry for any mistakes I've made and long to hear those playful words again, knowing all is well.",
+            "When you tell me to 'get out' with that twinkle in your eye, it's a moment I hold dear. I'm deeply sorry for any reason I've given you to say it in earnest and hope to be welcomed back with a smile.",
+            "Your eyes that smile and your baby-soft cheeks are missed every moment. I'm sorry for taking the warmth of your scoldings for granted and promise to be the reason for your smiles, not your 'get outs.'",
+            "The gentleness of your cheeks and the brightness of your eyes are what I long for. I'm sincerely sorry for any actions that have taken that softness away, and I ache to see the light in your eyes once more.",
+            "Your playful insults, the way your eyes light up, and the softness of your cheeks are what make my world. I'm sorry for any actions that have caused a rift between us, and I'm eager to mend it.",
+            "The way your eyes smile and your cheeks soften is the most beautiful sight to me. I'm sorry for any hurt I've caused and am longing to see that beauty once again.",
+            "I cherish every 'idiot' and 'get out' you playfully throw at me because it comes from you. I'm sorry for any pain I've caused and eagerly await the moment when we can laugh about these words again.",
+            "Your beautiful eyes and soft cheeks should not be marred by sadness, especially not because of me. I'm sorry for any hurt I've caused and am determined to see the sparkle return to your eyes.",
+            "Please Please Please",
+"I Want to see smile on your face yamiiiiiiiiiiiiiiiiiiiiiiiiiii",
+"Your sweet bye bye its more more good yamiiiiiiiiiiiiiii",
+"I will help you in studing yamiiiiiiiiiiiiiii",
+"I think there is smile on you lips right now yamiiiiiiiiiiiiiii",
+"You are cute cute yami",
+"sweet yami",
+"I will make Dalbati yamiiiiiiiiiiiiiii",
+"I will really learn and make it for you yamiiiiiiiiiiiiiii",
+"Pleaseeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+"yammiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiiii"
+	
+        ];
+
+        function acceptApology() {
+            document.getElementById('emoji').innerHTML = "😊";
+            document.getElementById('sorryMessage').innerHTML = "Thank you so much, Yami.";
+            document.querySelectorAll('.button').forEach(btn => btn.style.display = 'none');
+        }
+
+        function escalateApology() {
+            if (noClickCount < apologies.length) {
+                document.getElementById('sorryMessage').innerText = apologies[noClickCount];
+                noClickCount++;
+            } else {
+                document.getElementById('sorryMessage').innerText = "Okay, I am going to give up. I will keep on trying until you talk with me, Yami.";
+                document.querySelectorAll('.button').forEach(btn => btn.style.display = 'none');
+            }
+
+            yesButtonScale += 0.1;
+            document.getElementById('yesButton').style.transform = `scale(${yesButtonScale})`;
+        }
+    </script>
+</body>
+</html>
